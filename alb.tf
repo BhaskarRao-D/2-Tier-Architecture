@@ -2,10 +2,10 @@
 resource "aws_lb_target_group" "target-group" {
 
   health_check {
-    interval            = 10
+    interval            = 12
     path                = "/"
     protocol            = "HTTP"
-    timeout             = 5
+    timeout             = 6
     healthy_threshold   = 5
     unhealthy_threshold = 2
   }
@@ -47,3 +47,4 @@ resource "aws_lb_target_group_attachment" "ec2-attach" {
   count            = length(aws_instance.web-server)
   target_group_arn = aws_lb_target_group.target-group.arn
   target_id        = aws_instance.web-server[count.index].id
+}
