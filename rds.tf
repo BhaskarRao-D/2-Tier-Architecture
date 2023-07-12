@@ -14,7 +14,7 @@ resource "aws_db_instance" "database" {
   db_subnet_group_name      = aws_db_subnet_group.my_subnet_group.name
   username                  = "bhaskar"
   password                  = "damuluri98"
-  multi_az                  = true
+  multi_az                  = false
   delete_automated_backups  = true
   parameter_group_name      = "default.mysql5.7"
   skip_final_snapshot       = true
