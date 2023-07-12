@@ -15,9 +15,9 @@ resource "aws_launch_configuration" "launch_config" {
 
 resource "aws_autoscaling_group" "asg-group" {
   name                 = "asg-group"
-  desired_capacity     = 2
-  max_size             = 3
-  min_size             = 2
+  desired_capacity     = 3
+  max_size             = 4
+  min_size             = 3
   force_delete         = true
   depends_on           = [aws_lb.application-lb]
   target_group_arns    = [aws_lb_target_group.target-group.arn]
