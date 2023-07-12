@@ -3,7 +3,7 @@ resource "aws_lb_target_group" "target-group" {
 
   health_check {
     interval            = 12
-    path                = "/"
+    path                = "/index.html"
     protocol            = "HTTP"
     timeout             = 6
     healthy_threshold   = 5
@@ -44,7 +44,6 @@ resource "aws_lb_listener" "alb-listener" {
 }
 
 resource "aws_lb_target_group_attachment" "ec2-attach" {
-  count            = length(aws_instance.web-server)
+  target_id        = aws_autoscaling_group.asg-group.id
   target_group_arn = aws_lb_target_group.target-group.arn
-  target_id        = aws_instance.web-server[count.index].id
 }
