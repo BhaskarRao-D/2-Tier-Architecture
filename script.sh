@@ -1,9 +1,9 @@
 #!/bin/bash
-sudo yum update -y
-sudo yum install httpd -y
-sudo systemctl enable httpd
-sudo systemctl start httpd
-sudo systemctl status httpd
+sudo apt update -y
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl start apache2
+sudo systemctl status apache2
 sudo mkfs.ext4 /dev/sdh
 sudo mount /dev/sdh /var/www/html
 sudo rm -rf /var/www/html/*
