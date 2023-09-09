@@ -1,8 +1,8 @@
 resource "aws_launch_configuration" "launch_config" {
   name_prefix     = "aws_launch_config"
-  image_id        = "ami-03c7c1f17ee073747"
+  image_id        = "ami-02bb7d8191b50f4bb"
   instance_type   = "t2.micro"
-  key_name        = "A-M"
+  key_name        = "TerraformProject"
   security_groups = [aws_security_group.webserver-sg.id]
 
   lifecycle {
@@ -15,9 +15,9 @@ resource "aws_launch_configuration" "launch_config" {
 
 resource "aws_autoscaling_group" "asg-group" {
   name                 = "asg-group"
-  desired_capacity     = 3
-  max_size             = 4
-  min_size             = 3
+  desired_capacity     = 1
+  max_size             = 1
+  min_size             = 1
   force_delete         = true
   depends_on           = [aws_lb.application-lb]
   target_group_arns    = [aws_lb_target_group.target-group.arn]
